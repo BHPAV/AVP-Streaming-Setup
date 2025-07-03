@@ -1,0 +1,28 @@
+{
+    "version": "0.1.0",
+    "description": "Installs and configures Sunshine for AVP Streaming Setup.",
+    "homepage": "https://github.com/AVP-Streaming-Setup",
+    "license": "MIT",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/LizardByte/Sunshine/releases/latest/download/SunshineSetup.exe",
+            "hash": "skip"
+        }
+    },
+    "bin": [
+        "Sunshine.exe"
+    ],
+    "installer": {
+        "script": [
+            "Start-Process `\"$dir\\SunshineSetup.exe`\" '/SILENT' -Wait"
+        ]
+    },
+    "uninstaller": {
+        "script": [
+            "Start-Process `\"$env:ProgramFiles\\Sunshine\\Uninstall.exe`\" '/SILENT' -Wait"
+        ]
+    },
+    "post_install": [
+        "Write-Host 'Run Install-AVPSunshine for additional configuration.'"
+    ]
+} 

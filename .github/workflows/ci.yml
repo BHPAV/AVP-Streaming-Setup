@@ -1,0 +1,77 @@
+name: CI
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+  workflow_dispatch:
+
+jobs:
+  lint-test:
+    name: Lint & Test
+    runs-on: windows-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Install PSScriptAnalyzer
+        shell: pwsh
+        run: |
+          Install-Module -Name PSScriptAnalyzer -Force -Scope CurrentUser
+
+      - name: Run PSScriptAnalyzer
+        shell: pwsh
+        run: |
+          Invoke-ScriptAnalyzer -Path src,tests -Recurse -Severity Error
+
+      - name: Install Pester
+        shell: pwsh
+        run: |
+          Install-Module -Name Pester -Force -SkipPublisherCheck -Scope CurrentUser
+
+      - name: Run Pester tests
+        shell: pwsh
+        run: |
+          Invoke-Pester -Path tests -Output Detailed
+
+  package:
+    name: Package (Chocolatey & Scoop)
+    needs: lint-test
+    if: startsWith(github.ref, 'refs/tags/')
+    runs-on: windows-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Verify Chocolatey installation
+        shell: pwsh
+        run: |
+          choco --version
+
+      - name: Build Chocolatey package
+        shell: pwsh
+        run: |
+          # Assuming packaging/choco/*.nuspec exists
+          choco pack packaging/choco/*.nuspec
+
+      - name: Archive Chocolatey package
+        uses: actions/upload-artifact@v3
+        with:
+          name: choco-package
+          path: "**/*.nupkg"
+
+      - name: Build Scoop manifest
+        shell: pwsh
+        run: |
+          $manifestPath = "packaging/scoop/avp-sunshine.json"
+          Write-Host "Scoop manifest path: $manifestPath"
+          # Placeholder for Scoop validation
+
+      - name: Archive Scoop manifest
+        uses: actions/upload-artifact@v3
+        with:
+          name: scoop-manifest
+          path: "packaging/scoop/*.json" 

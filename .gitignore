@@ -1,0 +1,64 @@
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# PowerShell
+*.ps1xml
+*.pssc
+*.psd1.bak
+*.psm1.bak
+
+# Build results
+[Dd]ebug/
+[Dd]ebugPublic/
+[Rr]elease/
+[Rr]eleases/
+x64/
+x86/
+bld/
+[Bb]in/
+[Oo]bj/
+[Ll]og/
+
+# Test results
+TestResults/
+*.trx
+*.coverage
+*.coveragexml
+
+# Package outputs
+*.nupkg
+*.snupkg
+output/
+packages/
+
+# Temporary files
+*.tmp
+*.temp
+*.log
+*.cache
+*~
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.vs/
+
+# User-specific files
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# Module staging
+staging/

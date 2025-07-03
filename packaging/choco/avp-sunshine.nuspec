@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2015/06/nuspec.xsd">
+  <metadata>
+    <id>avp-sunshine</id>
+    <version>0.1.0</version>
+    <title>AVP Sunshine</title>
+    <authors>AVP Streaming Setup</authors>
+    <owners>AVP Streaming Setup</owners>
+    <license type="expression">MIT</license>
+    <projectUrl>https://github.com/AVP-Streaming-Setup</projectUrl>
+    <iconUrl>https://raw.githubusercontent.com/AVP-Streaming-Setup/assets/master/icon.png</iconUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>Installs and configures Sunshine for AVP Streaming Setup.</description>
+    <tags>avp sunshine streaming</tags>
+  </metadata>
+  <files>
+    <file src="tools\\**" target="tools" />
+  </files>
+</package> 
