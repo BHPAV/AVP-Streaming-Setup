@@ -58,7 +58,7 @@ jobs:
           choco pack packaging/choco/*.nuspec
 
       - name: Archive Chocolatey package
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: choco-package
           path: "**/*.nupkg"
@@ -71,7 +71,7 @@ jobs:
           # Placeholder for Scoop validation
 
       - name: Archive Scoop manifest
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: scoop-manifest
           path: "packaging/scoop/*.json" 
