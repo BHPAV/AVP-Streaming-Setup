@@ -59,3 +59,36 @@ The project follows a standard PowerShell module structure:
 - Firewall rules are created with specific naming convention: `AVPSunshine-{port}`
 - Default Sunshine ports: 47984 (HTTP), 47989 (HTTPS), 47990 (Web UI)
 - Service name: "Sunshine"
+
+## Git Repository
+
+- **Repository URL**: https://github.com/BHPAV/AVP-Streaming-Setup
+- **Default branch**: main
+- **Visibility**: Public
+
+### Common Git Commands
+```powershell
+# Check repository status
+git status
+
+# Pull latest changes
+git pull
+
+# Create and switch to feature branch
+git checkout -b feature/branch-name
+
+# Stage changes
+git add .
+
+# Commit changes
+git commit -m "Description of changes"
+
+# Push branch to remote
+git push -u origin feature/branch-name
+```
+
+## GitHub Workflows
+
+The repository includes GitHub Actions workflows:
+- **CI Workflow** (.github/workflows/ci.yml): Continuous integration pipeline
+- **Documentation** (.github/workflows/docs.yml): Documentation build and deployment
